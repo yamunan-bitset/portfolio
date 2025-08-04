@@ -4,7 +4,7 @@ import './App.css';
 
 const interests = [
   {
-    title: "Pure Mathematics",
+    title: "Mathematics",
     description: "Algebra, Analysis, Number Theory",
     icon: "🔢"
   },
@@ -22,15 +22,15 @@ const interests = [
 
 const education = [
   {
-    degree: "B.Sc. Mathematics (Expected)",
-    institution: "University Name",
+    degree: "B.Sc. Mathematics",
+    institution: "National University of Singapore",
     score: "Expected",
-    duration: "2025 - Present"
+    duration: "2025 - 2029 (expected)"
   },
   {
     degree: "IB Diploma",
     institution: "Berlin International School",
-    score: "IB43",
+    score: "IB44",
     duration: "2023 - 2025"
   },
   {
@@ -60,10 +60,11 @@ const awards = [
 ];
 
 const publications = [
+  /*
   {
-    title: "Neutron Spallation Optimum Geometry for High Energy Proton interactions with GEANT4",
+    title: "Fractional model for Liquid Sloshing Dynamics",
     year: 2025,
-    authors: "Anirudh, Aadith, ...",
+    authors: "Anirudh, Aadith",
     journal: "Journal of Nuclear Physics"
   },
   {
@@ -71,7 +72,13 @@ const publications = [
     year: 2025,
     authors: "Anirudh",
     journal: "Applied Mathematics and Mechanics"
-  }
+  }*/
+ {
+  title: "Sorry... Still in publication",
+  year: 2025,
+  authors: "-",
+  journal: "-"
+ }
 ];
 
 const projects = [
@@ -172,9 +179,9 @@ function App() {
         <div>
           <h2 style={{ color: '#3730a3', marginBottom: 8 }}>About Me</h2>
           <p style={{ color: '#334155', fontSize: '1.08rem', lineHeight: 1.7 }}>
-            I am a passionate student with a strong interest in mathematics and physics. I enjoy exploring complex problems, finding elegant solutions, and writing proofs.
+            I am a passionate student with a strong interest in mathematics and physics. I enjoy finding elegant solutions, exploring complex problems, and writing proofs.
             My goal and career aspirations are to contribute to the field of mathematics or physics through research.
-            Currently, I am working as an intern at the Max-Born Institute in Berlin, where I am gaining valuable experience in experimental physics, especially in the field of non-linear optics and attosecond physics.
+            Currently, I am working as an intern at the Max-Born Institute in Berlin, where I am gaining valuable experience in experimental physics, especially in the field of femtosecond physics.
           </p>
         </div>
       </section>
