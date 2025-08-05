@@ -74,7 +74,7 @@ const publications = [
     journal: "Applied Mathematics and Mechanics"
   }*/
  {
-  title: "Sorry... Still in publication",
+  title: "Sorry... Still in publication!",
   year: 2025,
   authors: "-",
   journal: "-"
@@ -88,6 +88,21 @@ const projects = [
   }
 ];
 
+const experience = [
+  {
+    title: "Intern",
+    company: "Max-Born Institute, Berlin",
+    description: "Experimental Physics, Non-Linear Optics, Ultrafast Laser Physics.",
+    duration: "June 2025 - August 2025"
+  },
+  {
+    title: "Intern",
+    company: "Rolls-Royce Deutschland, Dahlewitz",
+    description: "FEM and CFD simulations, CAD modelling, Unittesting in Python3.",
+    duration: "June 2023 - July 2023"
+  }
+];
+
 function App() {
   // Enable smooth scrolling for anchor links
   useEffect(() => {
@@ -98,7 +113,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)', minHeight: '100vh', fontFamily: 'Segoe UI, sans-serif' }}>
+    <div className="App" style={{ background: '#f8fafc', minHeight: '100vh', fontFamily: 'Segoe UI, sans-serif' }}>
       {/* Banner/Navbar at the very top */}
       <nav className="App-navbar" style={{
         background: 'rgba(30, 41, 59, 0.95)',
@@ -194,28 +209,47 @@ function App() {
         maxWidth: 850,
         margin: '40px auto'
       }}>
-        <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Interests</h2>
+        <h2 style={{ color: '#a37330ff', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Interests</h2>
         <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
           {interests.map((interest, idx) => (
             <li
               key={idx}
               style={{
-                marginBottom: 12,
-                padding: '12px 18px',
-                borderRadius: '10px',
-                background: 'rgba(99,102,241,0.07)',
+                marginBottom: 18,
+                padding: '14px 24px',
+                borderRadius: '4px',
+                background: 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)',
+                boxShadow: '0 2px 12px rgba(99,102,241,0.08)',
                 listStyle: 'none',
-                borderLeft: '4px solid #6366f1',
+                position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px'
+                gap: '16px',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                cursor: 'pointer',
+                overflow: 'hidden'
+              }}
+              onMouseOver={e => {
+                e.currentTarget.style.transform = 'scale(1.03)';
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(162, 222, 217, 1)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, #788c92ff 10%, #e0e7ff 100%)';
+                e.currentTarget.style.color = '#fff';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 2px 12px rgba(99,102,241,0.08)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)';
+                e.currentTarget.style.color = '#334155';
               }}
             >
-              <span style={{ fontSize: '1.4em' }}>{interest.icon}</span>
+              <span style={{
+                fontSize: '1.7em',
+                filter: 'drop-shadow(0 2px 4px #6366f1aa)'
+              }}>{interest.icon}</span>
               <span>
-                <strong style={{ color: '#6366f1' }}>{interest.title}</strong>
+                <strong style={{ color: '#6366f1', fontSize: '1.08em', letterSpacing: '0.5px' }}>{interest.title}</strong>
                 {interest.description && (
-                  <span style={{ color: '#64748b', marginLeft: 6, fontSize: '0.98em' }}>
+                  <span style={{ color: '#64748b', marginLeft: 8, fontSize: '1em', fontStyle: 'italic' }}>
                     – {interest.description}
                   </span>
                 )}
@@ -233,179 +267,292 @@ function App() {
         maxWidth: 850,
         margin: '40px auto'
       }}>
-        <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Education</h2>
+        <h2 style={{ color: '#a37330ff', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Education</h2>
         <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
           {education.map((edu, idx) => (
             <li
               key={idx}
               style={{
                 marginBottom: 18,
-                padding: '16px 20px',
-                borderRadius: '12px',
-                background: 'rgba(99,102,241,0.07)',
-                boxShadow: '0 1px 4px rgba(99,102,241,0.06)',
+                padding: '18px 28px',
+                borderRadius: '8px',
+                background: 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)',
+                boxShadow: '0 2px 12px rgba(99,102,241,0.08)',
                 listStyle: 'none',
                 position: 'relative',
-                borderLeft: '4px solid #6366f1'
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                cursor: 'pointer',
+                overflow: 'hidden'
               }}
-            >
-              <strong style={{ color: '#6366f1' }}>{edu.degree}</strong>, {edu.institution}<br />
-              {/* Only show score/achievements if present */}
-              {edu.score && (
-                <>
-                  <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{edu.score}</span><br />
-                </>
-              )}
-              {edu.achievements && (
-                <>
-                  <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{edu.achievements}</span><br />
-                </>
-              )}
-              <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{edu.duration}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-      {/* Awards & Honours Section */}
-      <section id="awards" style={{
-        background: 'transparent',
-        borderRadius: '0',
-        boxShadow: 'none',
-        padding: '28px 24px',
-        maxWidth: 850,
-        margin: '40px auto'
-      }}>
-        <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Awards & Honours</h2>
-        <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
-          {awards.map((award, idx) => (
-            <li
-              key={idx}
-              style={{
+              onMouseOver={e => {
+                e.currentTarget.style.transform = 'scale(1.03)';
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(162, 222, 217, 1)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, #788c92ff 10%, #e0e7ff 100%)';
+                e.currentTarget.style.color = '#fff';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 2px 12px rgba(99,102,241,0.08)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)';
+                e.currentTarget.style.color = '#334155';
+                }}
+              >
+                <span style={{
+                fontSize: '2em',
+                filter: 'drop-shadow(0 2px 4px #6366f1aa)'
+                }}>🎓</span>
+                <span>
+                <strong style={{ color: '#6366f1', fontSize: '1.12em', letterSpacing: '0.5px' }}>{edu.degree}</strong>
+                <span style={{ color: '#64748b', marginLeft: 8, fontSize: '1em', fontStyle: 'italic' }}>
+                  – {edu.institution}
+                </span>
+                <br />
+                {edu.score && (
+                  <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{edu.score}<br /></span>
+                )}
+                {edu.achievements && (
+                  <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{edu.achievements}<br /></span>
+                )}
+                <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{edu.duration}</span>
+                </span>
+              </li>
+              ))}
+            </ul>
+            </section>
+            {/* Awards & Honours Section */}
+            <section id="awards" style={{
+            background: 'transparent',
+            borderRadius: '0',
+            boxShadow: 'none',
+            padding: '28px 24px',
+            maxWidth: 850,
+            margin: '40px auto'
+            }}>
+            <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Awards & Honours</h2>
+            <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
+              {awards.map((award, idx) => (
+              <li
+                key={idx}
+                style={{
                 marginBottom: 18,
                 padding: '16px 20px',
-                borderRadius: '12px',
+                borderRadius: '8px',
                 background: 'rgba(99,102,241,0.07)',
                 boxShadow: '0 1px 4px rgba(99,102,241,0.06)',
                 listStyle: 'none',
                 position: 'relative',
-                borderLeft: '4px solid #6366f1'
-              }}
-            >
-              <strong style={{ color: '#6366f1' }}>{award.title}</strong><br />
-              {award.description}<br />
-              <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{award.year}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-      {/* Experience Section */}
-      <section id="experience" style={{
-        background: 'transparent',
-        borderRadius: '0',
-        boxShadow: 'none',
-        padding: '28px 24px',
-        maxWidth: 850,
-        margin: '40px auto'
-      }}>
-        <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Experience</h2>
-        <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
-          <li
-            style={{
-              marginBottom: 18,
-              padding: '16px 20px',
-              borderRadius: '12px',
-              background: 'rgba(99,102,241,0.07)',
-              boxShadow: '0 1px 4px rgba(99,102,241,0.06)',
-              listStyle: 'none',
-              position: 'relative',
-              borderLeft: '4px solid #6366f1'
-            }}
-          >
-            <strong style={{ color: '#6366f1' }}>Intern</strong>, Max-Born Institute, Berlin<br />
-            Experimental physics, non-linear optics, attosecond physics.<br />
-            <span style={{ fontSize: '0.98rem', color: '#64748b' }}>July 2025 - Present</span>
-          </li>
-          <li
-            style={{
-              marginBottom: 18,
-              padding: '16px 20px',
-              borderRadius: '12px',
-              background: 'rgba(99,102,241,0.07)',
-              boxShadow: '0 1px 4px rgba(99,102,241,0.06)',
-              listStyle: 'none',
-              position: 'relative',
-              borderLeft: '4px solid #6366f1'
-            }}
-          >
-            <strong style={{ color: '#6366f1' }}>Intern</strong>, Rolls-Royce Deutschland, Dahlewitz<br />
-            FEM and CFD simulations, CAD modelling, Unittesting in Python3.<br />
-            <span style={{ fontSize: '0.98rem', color: '#64748b' }}>June 2023 - July 2023</span>
-          </li>
-        </ul>
-      </section>
-      {/* Projects Section */}
-      <section id="projects" style={{
-        background: 'transparent',
-        borderRadius: '0',
-        boxShadow: 'none',
-        padding: '28px 24px',
-        maxWidth: 850,
-        margin: '40px auto'
-      }}>
-        <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Projects</h2>
-        <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
-          {projects.map((project, idx) => (
-            <li
-              key={idx}
-              style={{
-                marginBottom: 18,
-                padding: '16px 20px',
-                borderRadius: '12px',
-                background: 'rgba(99,102,241,0.07)',
-                boxShadow: '0 1px 4px rgba(99,102,241,0.06)',
-                listStyle: 'none',
-                position: 'relative',
-                borderLeft: '4px solid #6366f1'
-              }}
-            >
-              <strong style={{ color: '#6366f1' }}>{project.title}</strong>: {project.description}
-            </li>
-          ))}
-        </ul>
-      </section>
-      {/* Publications Section */}
-      <section id="publications" style={{
-        background: 'transparent',
-        borderRadius: '0',
-        boxShadow: 'none',
-        padding: '28px 24px',
-        maxWidth: 850,
-        margin: '40px auto'
-      }}>
-        <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Publications</h2>
-        <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
-          {publications.map((pub, idx) => (
-            <li
-              key={idx}
-              style={{
-                marginBottom: 18,
-                padding: '16px 20px',
-                borderRadius: '12px',
-                background: 'rgba(99,102,241,0.07)',
-                boxShadow: '0 1px 4px rgba(99,102,241,0.06)',
-                listStyle: 'none',
-                position: 'relative',
-                borderLeft: '4px solid #6366f1'
-              }}
-            >
-              <strong style={{ color: '#6366f1' }}>{pub.title}</strong> ({pub.year})<br />
-              <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{pub.authors}</span> <br />
-              <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{pub.journal}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-      {/* Contact Section */}
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                cursor: 'pointer',
+                overflow: 'hidden'
+                }}
+                onMouseOver={e => {
+                e.currentTarget.style.transform = 'scale(1.03)';
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(162, 222, 217, 1)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, #788c92ff 10%, #e0e7ff 100%)';
+                e.currentTarget.style.color = '#fff';
+                }}
+                onMouseOut={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 1px 4px rgba(99,102,241,0.06)';
+                e.currentTarget.style.background = 'rgba(99,102,241,0.07)';
+                e.currentTarget.style.color = '#334155';
+                }}
+                >
+                <span style={{
+                  fontSize: '1.7em',
+                  filter: 'drop-shadow(0 2px 4px #6366f1aa)'
+                }}>🏅</span>
+                <span>
+                  <strong style={{ color: '#6366f1', fontSize: '1.08em', letterSpacing: '0.5px' }}>{award.title}</strong>
+                  <span style={{ color: '#64748b', marginLeft: 8, fontSize: '1em', fontStyle: 'italic' }}>
+                  – {award.description}
+                  </span>
+                  <br />
+                  <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{award.year}</span>
+                </span>
+                </li>
+                ))}
+                </ul>
+                </section>
+                {/* Experience Section */}
+                <section id="experience" style={{
+                background: 'transparent',
+                borderRadius: '0',
+                boxShadow: 'none',
+                padding: '28px 24px',
+                maxWidth: 850,
+                margin: '40px auto'
+                }}>
+                <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Experience</h2>
+                <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
+                {experience.map((exp, idx) => (
+                  <li
+                  key={idx}
+                  style={{
+                    marginBottom: 18,
+                    padding: '16px 20px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)',
+                    boxShadow: '0 2px 12px rgba(99,102,241,0.08)',
+                    listStyle: 'none',
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '18px',
+                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    cursor: 'pointer',
+                    overflow: 'hidden'
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = 'scale(1.03)';
+                    e.currentTarget.style.boxShadow = '0 6px 24px rgba(162, 222, 217, 1)';
+                    e.currentTarget.style.background = 'linear-gradient(90deg, #788c92ff 10%, #e0e7ff 100%)';
+                    e.currentTarget.style.color = '#fff';
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.boxShadow = '0 2px 12px rgba(99,102,241,0.08)';
+                    e.currentTarget.style.background = 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)';
+                    e.currentTarget.style.color = '#334155';
+                  }}
+                  >
+                  <span style={{
+                    fontSize: '1.7em',
+                    filter: 'drop-shadow(0 2px 4px #6366f1aa)'
+                  }}>🧑‍💼</span>
+                  <span>
+                    <strong style={{ color: '#6366f1', fontSize: '1.08em', letterSpacing: '0.5px' }}>{exp.title}</strong>, {exp.company}<br />
+                    <span style={{ color: '#64748b', fontSize: '1em', fontStyle: 'italic' }}>
+                    {exp.description}
+                    </span>
+                    <br />
+                    <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{exp.duration}</span>
+                  </span>
+                  </li>
+                ))}
+                </ul>
+                </section>
+                {/* Projects Section */}
+              <section id="projects" style={{
+              background: 'transparent',
+              borderRadius: '0',
+              boxShadow: 'none',
+              padding: '28px 24px',
+              maxWidth: 850,
+              margin: '40px auto'
+              }}>
+              <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Projects</h2>
+              <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
+                {projects.map((project, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                  marginBottom: 18,
+                  padding: '16px 20px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)',
+                  boxShadow: '0 2px 12px rgba(99,102,241,0.08)',
+                  listStyle: 'none',
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '18px',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'pointer',
+                  overflow: 'hidden'
+                  }}
+                  onMouseOver={e => {
+                  e.currentTarget.style.transform = 'scale(1.03)';
+                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(162, 222, 217, 1)';
+                  e.currentTarget.style.background = 'linear-gradient(90deg, #788c92ff 10%, #e0e7ff 100%)';
+                  e.currentTarget.style.color = '#fff';
+                  }}
+                  onMouseOut={e => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(99,102,241,0.08)';
+                  e.currentTarget.style.background = 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)';
+                  e.currentTarget.style.color = '#334155';
+                  }}
+                >
+                  <span style={{
+                  fontSize: '1.7em',
+                  filter: 'drop-shadow(0 2px 4px #6366f1aa)'
+                  }}>🛠️</span>
+                  <span>
+                  <strong style={{ color: '#6366f1', fontSize: '1.08em', letterSpacing: '0.5px' }}>{project.title}</strong>
+                  <span style={{ color: '#64748b', marginLeft: 8, fontSize: '1em', fontStyle: 'italic' }}>
+                    – {project.description}
+                  </span>
+                  </span>
+                </li>
+                ))}
+              </ul>
+              </section>
+              {/* Publications Section */}
+              <section id="publications" style={{
+              background: 'transparent',
+              borderRadius: '0',
+              boxShadow: 'none',
+              padding: '28px 24px',
+              maxWidth: 850,
+              margin: '40px auto'
+              }}>
+              <h2 style={{ color: '#3730a3', marginBottom: 12, marginLeft: 0, textAlign: 'left' }}>Publications</h2>
+              <ul style={{ color: '#334155', fontSize: '1.05rem', paddingLeft: 0 }}>
+                {publications.map((pub, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                  marginBottom: 18,
+                  padding: '16px 20px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)',
+                  boxShadow: '0 2px 12px rgba(99,102,241,0.08)',
+                  listStyle: 'none',
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '18px',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'pointer',
+                  overflow: 'hidden'
+                  }}
+                  onMouseOver={e => {
+                  e.currentTarget.style.transform = 'scale(1.03)';
+                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(162, 222, 217, 1)';
+                  e.currentTarget.style.background = 'linear-gradient(90deg, #788c92ff 10%, #e0e7ff 100%)';
+                  e.currentTarget.style.color = '#fff';
+                  }}
+                  onMouseOut={e => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(99,102,241,0.08)';
+                  e.currentTarget.style.background = 'linear-gradient(90deg, #e0e7ff 60%, #f8fafc 100%)';
+                  e.currentTarget.style.color = '#334155';
+                    }}
+                  >
+                    <span style={{
+                    fontSize: '1.7em',
+                    filter: 'drop-shadow(0 2px 4px #6366f1aa)'
+                    }}>📚</span>
+                    <span>
+                    <strong style={{ color: '#6366f1', fontSize: '1.08em', letterSpacing: '0.5px' }}>{pub.title}</strong>
+                    <span style={{ color: '#64748b', marginLeft: 8, fontSize: '1em', fontStyle: 'italic' }}>
+                      ({pub.year})
+                    </span>
+                    <br />
+                    <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{pub.authors}</span> <br />
+                    <span style={{ fontSize: '0.98rem', color: '#64748b' }}>{pub.journal}</span>
+                    </span>
+                  </li>
+                  ))}
+                  </ul>
+                  </section>
       <section id="contact" style={{
         background: 'transparent',
         borderRadius: '0',
