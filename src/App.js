@@ -83,6 +83,10 @@ const publications = [
 
 const projects = [
   {
+    title: "UFOpticSim",
+    description: "A PyPI package (https://pypi.org/project/UFOpticSim/) for simulating ultrafast laser optics, which calculates chirping and pulse duration before and after propagation."
+  },
+  {
     title: "CoDesi",
     description: "An online platform (https://codesi.online) for interested students to learn the basics of programming in Python3."
   }
