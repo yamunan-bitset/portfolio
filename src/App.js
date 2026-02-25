@@ -5,12 +5,12 @@ import './App.css';
 const interests = [
   {
     title: "Mathematics",
-    description: "Algebra, Analysis, Number Theory",
+    description: "Analysis, Number Theory",
     icon: "🔢"
   },
   {
     title: "Theoretical and Experimental Physics",
-    description: "Exploring the fundamental laws of nature",
+    description: "Cosmology, Quantum Grvity",
     icon: "🔬"
   },
   {    
@@ -25,7 +25,7 @@ const education = [
     degree: "B.Sc. Mathematics",
     institution: "National University of Singapore",
     score: "Expected",
-    duration: "2025 - 2029 (expected)"
+    duration: "2025 - 2027 (expected)"
   },
   {
     degree: "IB Diploma",
@@ -42,6 +42,11 @@ const education = [
 ];
 
 const awards = [
+  {
+    title: "Top student in CS1010S Programming Methodology",
+    description: "Awarded certificate from School of Computing at NUS for being the top performer among 437 students",
+    year: 2026
+  },
   {
     title: "Kant Prize",
     description: "ZeroBears: Studying the phenomenon of neutron spallation, and its detection",
